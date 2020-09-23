@@ -1,11 +1,12 @@
 import {ComponentResponse, RaguComponent} from "./ragu-component";
+import {FetchRequestAdapter} from "./adapters/fetch.adapter";
 
-type Request = {
+export type Request = {
   resolve: () => Promise<ComponentResponse>
   cancel: () => void
 };
 
-type RequestAdapter = {
+export type RequestAdapter = {
   request: (componentURL: string) => Request
 };
 
@@ -16,12 +17,7 @@ export interface RaguClientConfig {
 
 const defaultConfig: RaguClientConfig = {
   timeout: 5000,
-  requestAdapter: {
-    request: () => ({
-      resolve: () => Promise.resolve<any>({}),
-      cancel: () => {}
-    })
-  }
+  requestAdapter: new FetchRequestAdapter()
 }
 
 export class RaguClient {

@@ -10,9 +10,10 @@
     "test": "jest --verbose"
   },
   "devDependencies": {
+    "abort-controller": "^3.0.0",
+    "cross-fetch": "^3.0.6",
     "jest": "^26.4.2",
     "nock": "^13.0.4",
-    "node-fetch": "^2.6.1",
     "ts-jest": "^26.4.0",
     "typescript": "^4.0.3"
   }

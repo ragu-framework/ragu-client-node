@@ -1,1 +1,2 @@
-global.fetch = require('node-fetch');
+require('cross-fetch/polyfill');
+require('abort-controller/polyfill');
