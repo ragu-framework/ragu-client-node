@@ -13,13 +13,21 @@ export interface ComponentResponse {
 
 export interface RaguClientConfig {
   timeout: number;
-  requestAdapter: (componentURL: string) => Promise<ComponentResponse>;
+  requestAdapter: (componentURL: string) => {
+    resolve: () => Promise<ComponentResponse>
+    cancel: () => void
+  };
 }
 
 const defaultConfig: RaguClientConfig = {
   timeout: 5000,
-  requestAdapter: () => Promise.resolve<any>({})
+  requestAdapter: () => ({
+    resolve: () => Promise.resolve<any>({}),
+    cancel: () => {}
+  })
 }
+
+
 
 class RaguComponent {
   constructor(readonly raw: ComponentResponse) {
@@ -54,6 +62,21 @@ export class RaguClient {
   }
 
   async fetchComponent(url: string): Promise<RaguComponent> {
-    return new RaguComponent(await this.config.requestAdapter(url));
+    const requestAdapter = this.config.requestAdapter(url);
+    const response = requestAdapter.resolve();
+    let timeout;
+
+    const timeoutPromise = new Promise((_resolve, reject) => {
+      timeout = setTimeout(() => {
+        reject(new Error('Timeout'));
+        requestAdapter.cancel();
+      }, 5000);
+    });
+
+    await Promise.race([timeoutPromise, response]);
+
+    clearTimeout(timeout);
+
+    return new RaguComponent(await response);
   }
 }
