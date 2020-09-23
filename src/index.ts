@@ -1,15 +1,4 @@
-export interface ComponentResponse {
-  html: string,
-  props: Record<string, string>,
-  dependencies: {
-    nodeRequire: string,
-    globalVariable: string,
-    dependency: string
-  }[],
-  styles?: string[],
-  client: string,
-  resolverFunction: string
-}
+import {ComponentResponse, RaguComponent} from "./ragu-component";
 
 export interface RaguClientConfig {
   timeout: number;
@@ -28,31 +17,6 @@ const defaultConfig: RaguClientConfig = {
 }
 
 
-
-class RaguComponent {
-  constructor(readonly raw: ComponentResponse) {
-  }
-
-  stylesheets(): string {
-    let stylesheets = "";
-
-    for (let stylesheetHref of (this.raw.styles || [])) {
-      stylesheets += `<link rel="stylesheet" href="${stylesheetHref}">`;
-    }
-
-    return stylesheets;
-  }
-
-  html() {
-    return `<script data-ragu-ssr type="application/json">${(this.ssrData())}</script>${this.raw.html}`;
-  }
-
-  private ssrData() {
-    const ssrData: Partial<ComponentResponse> = {...this.raw};
-    delete ssrData.html;
-    return JSON.stringify(ssrData);
-  }
-}
 
 export class RaguClient {
   private readonly config: RaguClientConfig
