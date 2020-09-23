@@ -1,5 +1,5 @@
-import {RaguClient} from "./index";
 import {ComponentResponse} from "./ragu-component";
+import {RaguClient} from "./client";
 
 describe('Ragu Client Node', () => {
   const componentResponse: ComponentResponse = {
