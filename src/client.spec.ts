@@ -37,7 +37,7 @@ describe('Ragu Client Node', () => {
       this.cancelStub = jest.fn();
     }
 
-    doRequest(url: string) {
+    request(url: string) {
       this.url = url;
 
       return {
@@ -47,7 +47,7 @@ describe('Ragu Client Node', () => {
     }
 
     asResolver() {
-      return this.doRequest.bind(this);
+      return this;
     }
   }
 
