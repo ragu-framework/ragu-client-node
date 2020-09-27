@@ -7,7 +7,7 @@
   "author": "Maniero <cmaniero@thoughtworks.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc; cp README.md dist/",
+    "build": "tsc; cp README.md dist/; cp package.json dist/",
     "test": "jest --coverage --verbose"
   },
   "devDependencies": {
