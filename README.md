@@ -1,4 +1,11 @@
 # Ragu Client Node
+
+![Ragu](https://github.com/ragu-framework/ragu-client-node/workflows/Ragu/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/ragu-framework/ragu-client-node/badge.svg?branch=main)](https://coveralls.io/github/ragu-framework/ragu-client-node?branch=main)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![npm version](https://badge.fury.io/js/ragu-client-node.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
 ## A client for Ragu Server
 
 You may need to fetch you micro-frontends at the server-side. 
