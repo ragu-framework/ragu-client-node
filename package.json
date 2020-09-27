@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "abort-controller": "^3.0.0",
+    "axios": "^0.20.0",
     "cross-fetch": "^3.0.6",
     "jest": "^26.4.2",
     "nock": "^13.0.4",
