@@ -1,5 +1,5 @@
 import {ComponentResponse, RaguComponent} from "./ragu-component";
-import {FetchRequestAdapter} from "./adapters/fetch.adapter";
+import {FetchRequestAdapter} from "./adapters/fetch";
 
 export type Request = {
   resolve: () => Promise<ComponentResponse>

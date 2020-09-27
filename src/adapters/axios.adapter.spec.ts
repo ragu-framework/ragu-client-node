@@ -1,6 +1,6 @@
 import {ComponentResponse} from "../ragu-component";
 import nock from "nock";
-import {AxiosRequestAdapter} from "./axios.adapter";
+import {AxiosRequestAdapter} from "./axios";
 import {RequestAdapter} from "../client";
 
 describe('axios adapter', () => {

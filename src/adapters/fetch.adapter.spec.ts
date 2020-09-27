@@ -1,6 +1,6 @@
 import {ComponentResponse} from "../ragu-component";
 import nock from "nock";
-import {FetchRequestAdapter} from "./fetch.adapter";
+import {FetchRequestAdapter} from "./fetch";
 import {RequestAdapter} from "../client";
 
 describe('fetch adapter', () => {

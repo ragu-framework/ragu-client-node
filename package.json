@@ -7,7 +7,8 @@
   "author": "Maniero <cmaniero@thoughtworks.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest --verbose"
+    "build": "tsc; cp README.md dist/",
+    "test": "jest --coverage --verbose"
   },
   "devDependencies": {
     "abort-controller": "^3.0.0",
