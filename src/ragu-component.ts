@@ -12,7 +12,7 @@ export interface ComponentResponse {
 }
 
 export class RaguComponent {
-  constructor(readonly raw: ComponentResponse) {
+  constructor(readonly raw: ComponentResponse, readonly componentURL: string) {
   }
 
   stylesheets(): string {
@@ -33,5 +33,9 @@ export class RaguComponent {
     const ssrData: Partial<ComponentResponse> = {...this.raw};
     delete ssrData.html;
     return JSON.stringify(ssrData);
+  }
+
+  toRaguDOM(): string {
+    return `<ragu-component src="${this.componentURL}">${this.html()}</ragu-component>`;
   }
 }

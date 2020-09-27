@@ -27,7 +27,9 @@ const component = await client.fetchComponent('https://a-squad-ragu-server.organ
 
 component.stylesheets(); // <style src="https://a-squad-ragu-server.organization.com/assets/hello-world.css"> 
 
-component.html(); // <ragu-component src="https://a-squad-ragu-server.organization.com/components/hello-world">...content-from-server</ragu-component>
+component.html(); // html-content-from-server
+
+component.toRaguDOM(); // <ragu-component src="https://a-squad-ragu-server.organization.com/components/hello-world">...html-content-from-server</ragu-component>
 ```
 
 ### Fetch API

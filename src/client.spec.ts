@@ -83,6 +83,21 @@ describe('Ragu Client Node', () => {
         .toContain(`<div>Hello World</div>`);
   });
 
+  it('wraps the html with the rag-component tag', async () => {
+    const testAdapter = new TestAdapter();
+    testAdapter.resolveStub.mockImplementation(() => Promise.resolve(componentResponse));
+
+    const client = new RaguClient({requestAdapter: testAdapter.asResolver()});
+    const response = await client.fetchComponent('https://ragu-cart-vuejs.herokuapp.com/components/cart');
+
+    expect(response.toRaguDOM().startsWith(`<ragu-component src="https://ragu-cart-vuejs.herokuapp.com/components/cart">`)).toBeTruthy();
+
+    expect(response.toRaguDOM())
+        .toContain(`<div>Hello World</div>`);
+
+    expect(response.toRaguDOM().endsWith(`</ragu-component>`)).toBeTruthy();
+  });
+
   it('adds the ssr script tag without the html', async () => {
     const expectedSSRJson: Partial<ComponentResponse> = {
       ...componentResponse

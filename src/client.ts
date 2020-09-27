@@ -43,6 +43,6 @@ export class RaguClient {
 
     clearTimeout(timeout);
 
-    return new RaguComponent(await response);
+    return new RaguComponent(await response, url);
   }
 }
