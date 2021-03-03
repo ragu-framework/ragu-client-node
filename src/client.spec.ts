@@ -98,6 +98,18 @@ describe('Ragu Client Node', () => {
     expect(response.toRaguDOM().endsWith(`</ragu-component>`)).toBeTruthy();
   });
 
+  it('does not renders anything given html is empty', async () => {
+    const testAdapter = new TestAdapter();
+    testAdapter.resolveStub.mockImplementation(() => Promise.resolve({...componentResponse, html: undefined}));
+
+    const client = new RaguClient({requestAdapter: testAdapter.asResolver()});
+    const response = await client.fetchComponent('https://ragu-cart-vuejs.herokuapp.com/components/cart');
+
+    expect(response.toRaguDOM())
+        .not
+        .toContain(`undefined`);
+  });
+
   it('adds the ssr script tag without the html', async () => {
     const expectedSSRJson: Partial<ComponentResponse> = {
       ...componentResponse

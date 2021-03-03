@@ -26,7 +26,7 @@ export class RaguComponent {
   }
 
   html() {
-    return `<script data-ragu-ssr type="application/json">${(this.ssrData())}</script>${this.raw.html}`;
+    return `<script data-ragu-ssr type="application/json">${(this.ssrData())}</script>${this.raw.html || ''}`;
   }
 
   private ssrData() {
