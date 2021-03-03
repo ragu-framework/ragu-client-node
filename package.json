@@ -1,6 +1,6 @@
 {
   "name": "ragu-client-node",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A client for Ragu Server",
   "main": "index.js",
   "repository": "https://github.com/ragu-framework/ragu-client-node",
